@@ -7,24 +7,29 @@ Description: module that contains one class BaseClass
 from datatime import datatime
 from uuid import uuid4
 
-class BaseModel:
-    """
-    """
 
+class BaseModel:
+    """Represents the BaseModel of the HBnB project."""
     def __init__(self):
-        """
-        """
+        """Initialize a new BaseModel.
+
+        Args:
+            *args (any): Unused.
+            **kwargs (dict): Key/value pairs of attributes.
+            """
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datatime.now()
 
     def save(self):
-        """
-        """
+        """Update updated_at with the current datetime."""
         self.updated_at = datatime.now()
 
     def to_dict(self):
-        """
+        """Return the dictionary of the BaseModel instance.
+
+        Includes the key/value pair __class__ representing
+        the class name of the object.
         """
         self_dict = self.__dict__.copy()
         self_dict["__class__"] = self.__class__.__name__
@@ -33,6 +38,5 @@ class BaseModel:
         return self_dict
 
     def __str__(self):
-        """    
-        """
+        """Return the print/str representation of the BaseModel instance."""
         return f"[{self.__class__.__name_}_] ({self.id}) {self.__dict__}"
