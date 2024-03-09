@@ -40,9 +40,8 @@ All the classes are handled by the `Storage` engine in the `FileStorage` Class.
 All the development and testing was runned over an operating system Ubuntu 20.04 LTS using programming language Python 3.8.3. The editors used were VIM 8.1.2269, VSCode 1.6.1 and Atom 1.58.0 . Control version using Git 2.25.1.
 
 ## 0x03 Installation
-
 ```bash
-git clone https://github.com/aysuarex/AirBnB_clone.git
+git clone https://github.com/Medjai229/AirBnB_clone.git
 ```
 
 change to the `AirBnb` directory and run the command:
@@ -263,18 +262,16 @@ e952b772-80a5-41e9-b728-6bc4dc5c21b4
 ```
 ## Authors
 <details>
-    <summary>Ayomide Suara</summary>
+    <summary>Malik Hussien</summary>
     <ul>
-    <li><a href="https://www.github.com/aysuarex">Github</a></li>
-    <li><a href="https://www.twitter.com/Aysuarex">Twitter</a></li>
-    <li><a href="mailto:aysuarex@gmail.com">e-mail</a></li>
+    <li><a href="https://www.github.com/Medjai229">Github</a></li>
+    <li><a href="malikhussein229@gmail.com">e-mail</a></li>
     </ul>
-</details>
+    </details>
 <details>
-    <summary>Bamidele Adefolaju</summary>
+    <summary>Mohamed Marzouk</summary>
     <ul>
-    <li><a href="https://www.github.com/lexxyla">Github</a></li>
-    <li><a href="https://www.twitter.com/lexxyla">Twitter</a></li>
-    <li><a href="mailto:bamideleadefolaju@gmail.com">e-mail</a></li>
+    <li><a href="https://www.github.com/MMarzoo">Github</a></li>
+    <li><a href="mmarzouk12378@gmail.com">e-mail</a></li>
     </ul>
 </details>
