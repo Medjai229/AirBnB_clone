@@ -4,7 +4,7 @@ File: base_model.py
 Description: module that contains one class BaseClass
 """
 
-from datatime import datatime
+from datetime import datetime
 from uuid import uuid4
 
 
@@ -19,7 +19,7 @@ class BaseModel:
             """
         self.id = str(uuid4())
         self.created_at = datetime.now()
-        self.updated_at = datatime.now()
+        self.updated_at = datetime.now()
         if len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key == "__class__":
@@ -31,7 +31,7 @@ class BaseModel:
 
     def save(self):
         """Update updated_at with the current datetime."""
-        self.updated_at = datatime.now()
+        self.updated_at = datetime.now()
 
     def to_dict(self):
         """Return the dictionary of the BaseModel instance.
@@ -47,4 +47,4 @@ class BaseModel:
 
     def __str__(self):
         """Return the print/str representation of the BaseModel instance."""
-        return f"[{self.__class__.__name_}_] ({self.id}) {self.__dict__}"
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
