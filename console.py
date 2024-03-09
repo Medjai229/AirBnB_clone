@@ -3,6 +3,7 @@
 import cmd
 from models.base_model import BaseModel
 from models import storage
+from models.user import User
 
 
 def validate(arg):
@@ -16,7 +17,10 @@ class HBNBCommand(cmd.Cmd):
         prompt (str): The command prompt.
     """
     prompt = "(hbnb)"
-    classes = ["BaseModel"]
+    classes = [
+            "BaseModel",
+            "User"
+            ]
 
     def do_quit(self, arg):
         """Quit command to exit the program."""
