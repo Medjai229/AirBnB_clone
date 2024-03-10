@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines the HBnB console."""
 import cmd
+import re
 from models.base_model import BaseModel
 from models import storage
 from models.user import User
@@ -10,9 +11,11 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 def validate(arg):
     """this function bulids custom commands line arguments"""
     return arg.split()
+
 
 class HBNBCommand(cmd.Cmd):
     """Defines the HolbertonBnB command interpreter.
@@ -30,6 +33,49 @@ class HBNBCommand(cmd.Cmd):
             "Place",
             "Review"
             ]
+
+    def default(self, line):
+        """
+        Handles cases where user commands are not recognized by HBNBConsole.
+
+        This method is invoked when the user enters a command
+        that doesn't match any of the defined functionalities in HBNBConsole.
+        It checks for a pattern matching "<class_name>.<method>(<args>)"
+        and attempts to call the corresponding do_* method if valid.
+        Otherwise, it prints an error message.
+
+        Args:
+        -   line (str): The user input command string.
+        """
+        commands = {
+            "create": self.do_create,
+            "all": self.do_all,
+        }
+
+        pattern = r"^(\w+)\.(\w+)\((.*)\)$"
+        matched = re.match(pattern, line)
+
+        if not matched:
+            super().default(line)
+            return
+
+        cmd = matched.groups()
+        args = ""
+        method = cmd[1]
+        cls_name = cmd[0]
+
+        if method not in commands:
+            print(error_messages["no_method"])
+            return
+
+        if method in ("all", "create"):
+            commands[method](cls_name)
+            return
+
+        obj_id = cmd[2].split(',')[0]
+        attr_name = cmd[2].split(',')[1] if len(cmd[2].split(',')) > 1 else ""
+        attr_value = cmd[2].split(',')[2] if len(cmd[2].split(',')) > 2 else ""
+        args = f"{cls_name} {obj_id} {atr_name} {attr_value}"
 
     def do_quit(self, arg):
         """Quit command to exit the program."""
@@ -150,7 +196,8 @@ class HBNBCommand(cmd.Cmd):
                     obj.__dict__[k] = valtype(v)
                 else:
                     obj.__dict__[k] = v
-        storage.save()            
+        storage.save()
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
