@@ -75,7 +75,7 @@ class HBNBCommand(cmd.Cmd):
         if method in ("all", "create", "count"):
             commands[method](cls_name)
             return
-        
+
         obj_id = cmd[2]
         args = f"{cls_name} {obj_id}"
         if method in ("show", "destroy"):
