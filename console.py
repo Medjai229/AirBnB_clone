@@ -50,6 +50,7 @@ class HBNBCommand(cmd.Cmd):
         commands = {
             "create": self.do_create,
             "all": self.do_all,
+            "count": self.do_count
         }
 
         pattern = r"^(\w+)\.(\w+)\((.*)\)$"
@@ -68,7 +69,7 @@ class HBNBCommand(cmd.Cmd):
             print(error_messages["no_method"])
             return
 
-        if method in ("all", "create"):
+        if method in ("all", "create", "count"):
             commands[method](cls_name)
             return
 
@@ -197,6 +198,19 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     obj.__dict__[k] = v
         storage.save()
+
+    def do_count(self, arg):
+        """retrieve the number of instances of a class"""
+        args = validate(arg)
+        if not args:
+            return
+
+        num_instances = 0
+        for instance in storage.all().values():
+            if validate(arg)[0] == type(instance).__name__:
+                num_instances += 1
+
+        print(num_instances)
 
 
 if __name__ == "__main__":
