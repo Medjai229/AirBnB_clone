@@ -236,7 +236,7 @@ class TestUserSaveMethod(unittest.TestCase):
         u = User()
         u.save()
         uid = "User." + u.id
-        with open("file.json", "r") as f:
+        with open("hbnb_info.json", "r") as f:
             self.assertIn(uid, f.read())
 
 
