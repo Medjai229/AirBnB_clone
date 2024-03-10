@@ -224,7 +224,7 @@ class TestAmenitySaveMethod(unittest.TestCase):
         a = Amenity()
         a.save()
         aid = "Amenity." + a.id
-        with open("file.json", "r") as f:
+        with open("hbnb_info.json", "r") as f:
             self.assertIn(aid, f.read())
 
 
