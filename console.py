@@ -50,7 +50,9 @@ class HBNBCommand(cmd.Cmd):
         commands = {
             "create": self.do_create,
             "all": self.do_all,
-            "count": self.do_count
+            "count": self.do_count,
+            "show": self.do_show,
+            "destroy": self.do_destroy
         }
 
         pattern = r"^(\w+)\.(\w+)\((.*)\)$"
@@ -71,6 +73,12 @@ class HBNBCommand(cmd.Cmd):
 
         if method in ("all", "create", "count"):
             commands[method](cls_name)
+            return
+        
+        obj_id = cmd[2]
+        args = f"{cls_name} {obj_id}"
+        if method in ("show", "destroy"):
+            commands[method](args, check_id=True)
             return
 
         obj_id = cmd[2].split(',')[0]
@@ -104,11 +112,10 @@ class HBNBCommand(cmd.Cmd):
             print(eval(args[0])().id)
             storage.save()
 
-    def do_show(self, arg):
+    def do_show(self, arg, cheack_id=True):
         """Prints the string representation of an instance
         based on the class name and id"""
-        args = validate(arg)
-
+        args = validate(arg, check_id=check_id)
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in HBNBCommand.classes:
