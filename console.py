@@ -52,7 +52,8 @@ class HBNBCommand(cmd.Cmd):
             "all": self.do_all,
             "count": self.do_count,
             "show": self.do_show,
-            "destroy": self.do_destroy
+            "destroy": self.do_destroy,
+            "update": self.do_update
         }
 
         pattern = r"^(\w+)\.(\w+)\((.*)\)$"
@@ -84,7 +85,10 @@ class HBNBCommand(cmd.Cmd):
         obj_id = cmd[2].split(',')[0]
         attr_name = cmd[2].split(',')[1] if len(cmd[2].split(',')) > 1 else ""
         attr_value = cmd[2].split(',')[2] if len(cmd[2].split(',')) > 2 else ""
-        args = f"{cls_name} {obj_id} {atr_name} {attr_value}"
+        args = f"{cls_name} {obj_id} {attr_name} {attr_value}"
+        if method == "update":
+            commands[method](args)
+            return
 
     def do_quit(self, arg):
         """Quit command to exit the program."""
