@@ -8,8 +8,8 @@ Author: Gizachew Bayness (Elec Crazy) and Biruk Gelelcha
 Date Created: Sep 2 2022
 """
 import unittest
-from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
+from models.base_model import BaseModel
 from models.place import Place
 from models.city import City
 from models.amenity import Amenity
@@ -142,7 +142,7 @@ class TestFileStorageMethods(unittest.TestCase):
         models.storage.new(rv)
         models.storage.save()
         save_text = ""
-        with open("hbnb_info.json", "r") as f:
+        with open("file.json", "r") as f:
             save_text = f.read()
             self.assertIn("BaseModel." + bm.id, save_text)
             self.assertIn("User." + us.id, save_text)
