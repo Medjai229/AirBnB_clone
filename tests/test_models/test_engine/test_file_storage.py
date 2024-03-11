@@ -4,8 +4,6 @@
 File: test_file_storage.py
 Desc: This module contains all possible testcases for the file_storage.py
       modlue in the models.engine package. It uses the standard unittest.
-Author: Gizachew Bayness (Elec Crazy) and Biruk Gelelcha
-Date Created: Sep 2 2022
 """
 import unittest
 from models.engine.file_storage import FileStorage
