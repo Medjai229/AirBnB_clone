@@ -2,7 +2,8 @@
 
 """
 File: test_amenity.py
-Date Created: Sep 2 2022
+Des: This module contains all possible testcases for the amenity.py
+modlue in the models package. It uses the standard unittest.
 """
 import unittest
 import models
