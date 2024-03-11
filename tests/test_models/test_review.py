@@ -230,7 +230,7 @@ class TestReviewSaveMethod(unittest.TestCase):
         r = Review()
         r.save()
         rid = "Review." + r.id
-        with open("file.json", "r") as f:
+        with open("hbnb_info.json", "r") as f:
             self.assertIn(rid, f.read())
 
 

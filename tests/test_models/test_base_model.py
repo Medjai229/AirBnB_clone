@@ -209,7 +209,7 @@ class TestBaseModelSaveMethod(unittest.TestCase):
         b = BaseModel()
         b.save()
         bid = "BaseModel." + b.id
-        with open("file.json", "r") as f:
+        with open("hbnb_info.json", "r") as f:
             self.assertIn(bid, f.read())
 
 

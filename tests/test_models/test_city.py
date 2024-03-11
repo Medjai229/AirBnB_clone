@@ -228,7 +228,7 @@ class TestStateSaveMethod(unittest.TestCase):
         c = City()
         c.save()
         cid = "City." + c.id
-        with open("file.json", "r") as f:
+        with open("hbnb_info.json", "r") as f:
             self.assertIn(cid, f.read())
 
 
